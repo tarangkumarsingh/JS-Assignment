@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Q3 - Mirror Corridor</title>
+</head>
+<body>
+<script>
+var N = parseInt(prompt("Enter N:"));
+var K = parseInt(prompt("Enter K:"));
+
+var result = -1;
+
+for (var X = 0; X <= 100000; X++) {
+    var num = N + X;
+    var str = num.toString();
+    var isPalin = true;
+
+    for (var i = 0; i < Math.floor(str.length / 2); i++) {
+        if (str[i] !== str[str.length - 1 - i]) {
+            isPalin = false;
+            break;
+        }
+    }
+
+    if (isPalin && num % K === 0) {
+        result = X;
+        break;
+    }
+}
+
+alert(result);
+</script>
+</body>
+</html>

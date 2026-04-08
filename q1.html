@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Q1 - Digit Gatekeeper</title>
+</head>
+<body>
+<script>
+var L = parseInt(prompt("Enter L:"));
+var R = parseInt(prompt("Enter R:"));
+var K = parseInt(prompt("Enter K:"));
+
+var count = 0;
+
+for (var x = L; x <= R; x++) {
+    if (x % K !== 0) continue;
+
+    var str = x.toString();
+    var hasZero = false;
+    var digitSum = 0;
+
+    for (var i = 0; i < str.length; i++) {
+        var d = parseInt(str[i]);
+        if (d === 0) {
+            hasZero = true;
+            break;
+        }
+        digitSum += d;
+    }
+
+    if (hasZero) continue;
+
+    var isPrime = true;
+    if (digitSum < 2) {
+        isPrime = false;
+    } else {
+        for (var j = 2; j * j <= digitSum; j++) {
+            if (digitSum % j === 0) {
+                isPrime = false;
+                break;
+            }
+        }
+    }
+
+    if (isPrime) count++;
+}
+
+alert(count);
+</script>
+</body>
+</html>
